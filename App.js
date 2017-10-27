@@ -9,6 +9,7 @@ export default class App extends React.Component {
 
     constructor(props) {
         super(props);
+        this.tasks = [];
         this.state = {
             text: '',
             dataSource: ds.cloneWithRows([]),
@@ -17,9 +18,10 @@ export default class App extends React.Component {
 
     _onAddItem() {
         const task = this.state.text;
+        this.tasks.push(task);
         this.setState({
             text: '',
-            dataSource: ds.cloneWithRows([task])
+            dataSource: ds.cloneWithRows(this.tasks)
         });
     }
 
